@@ -236,6 +236,8 @@ module NoCms
               # we can't leave the object blank
               if object.is_a?(ActiveRecord::Base) && object.save
                 fields_info["#{field}_id".to_sym] = object.id
+              else
+                puts "ERRORS ON #{object.class.name}: #{object.errors.full_messages.to_sentence}"
               end
             end
           end
